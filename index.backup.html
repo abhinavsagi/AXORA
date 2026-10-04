@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AXORA — Energy-to-Quality Intelligence</title>
+<style>
+:root{--bg:#020913;--panel:rgba(5,17,30,.78);--line:rgba(74,177,255,.34);--blue:#159cff;--cyan:#31d8ff;--text:#f4f8ff;--muted:#a9bdd3;--orange:#ff8a2a}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;background:radial-gradient(circle at 22% 35%,rgba(0,145,255,.16),transparent 32%),radial-gradient(circle at 80% 55%,rgba(0,216,255,.08),transparent 28%);pointer-events:none}
+.nav{height:80px;position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:0 4.5%;background:rgba(1,8,17,.72);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.07)}
+.logo{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:8px;font-size:25px}.mark{width:38px;height:32px;position:relative}.mark:before,.mark:after{content:"";position:absolute;transform:skew(-28deg);border-radius:2px}.mark:before{left:3px;top:3px;width:13px;height:27px;background:linear-gradient(#fff,#89bfff)}.mark:after{right:4px;top:0;width:17px;height:29px;background:linear-gradient(135deg,#11a7ff,#166fff)}.logo small{position:absolute;width:12px;height:7px;background:#16a8ff;bottom:0;left:14px;transform:skew(-28deg)}
+.navlinks{display:flex;gap:42px;align-items:center}.navlinks a{color:#c3d1e2;text-decoration:none;font-size:16px;transition:.25s}.navlinks a:hover,.navlinks a.active{color:#28b6ff}.navlinks a.active{position:relative}.navlinks a.active:after{content:"";position:absolute;left:0;right:0;bottom:-28px;height:3px;background:#1aaeff;box-shadow:0 0 14px #1aaeff}
+.cta{border:1px solid #159cff;color:white;padding:12px 22px;border-radius:28px;background:rgba(8,35,56,.55);font-weight:600;cursor:pointer;transition:.25s}.cta:hover{background:#118ff0;transform:translateY(-2px)}
+.hero{min-height:100vh;padding:140px 6% 80px;display:grid;grid-template-columns:1.25fr .75fr;gap:55px;align-items:center;position:relative;background:linear-gradient(90deg,rgba(2,9,17,.25),rgba(2,9,17,.58)),url('assets/axora-reference.png') center/cover no-repeat}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(2,9,17,.28),rgba(2,9,17,.12) 48%,rgba(2,9,17,.7));z-index:0}.hero>*{position:relative;z-index:1}
+.hero h1{font-size:clamp(58px,7vw,100px);letter-spacing:13px;line-height:.9;margin-bottom:28px}.hero h2{font-size:clamp(27px,3vw,46px);line-height:1.1;margin-bottom:20px}.hero h2 span{color:#16a9ff}.hero p{max-width:720px;color:#c1d1e3;font-size:19px;line-height:1.55}.metrics{display:flex;gap:18px;margin-top:42px}.metric{width:205px;padding:16px 18px;border:1px solid rgba(45,172,255,.42);background:rgba(3,18,32,.58);backdrop-filter:blur(10px);border-radius:12px;box-shadow:0 0 30px rgba(0,139,255,.07)}.metric-label{font-size:13px;color:#9fb5ca}.metric-value{font-size:25px;font-weight:700;margin-top:8px}.orange{color:#ff9a4b}.cyan{color:#35e1dc}
+.login{width:min(480px,100%);justify-self:end;padding:38px;border:1px solid rgba(77,184,255,.48);border-radius:22px;background:rgba(2,13,25,.76);backdrop-filter:blur(22px);box-shadow:0 30px 80px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.05)}.login .welcome{text-align:center;color:#c3d8ed;font-size:25px}.login .mini-logo{font-size:44px;font-weight:800;letter-spacing:7px;text-align:center;margin:10px 0 8px}.login .sub{text-align:center;color:#b5cbe1;margin-bottom:28px}.field{position:relative;margin:15px 0}.field input{width:100%;padding:16px 17px 16px 46px;border:1px solid rgba(105,169,213,.45);border-radius:13px;background:rgba(5,21,35,.7);color:white;outline:none;font-size:15px}.field input:focus{border-color:#16a9ff;box-shadow:0 0 0 3px rgba(22,169,255,.1)}.field span{position:absolute;left:16px;top:15px;color:#8eb0ca}.forgot{display:block;text-align:right;color:#16a9ff;text-decoration:none;font-size:13px;margin:8px 2px 22px}.signin{width:100%;padding:16px;border:0;border-radius:13px;background:linear-gradient(90deg,#087ff4,#10a9ff);color:white;font-size:16px;font-weight:700;cursor:pointer;box-shadow:0 10px 28px rgba(0,145,255,.23);transition:.25s}.signin:hover{transform:translateY(-2px);box-shadow:0 15px 32px rgba(0,145,255,.35)}.or{display:flex;align-items:center;gap:12px;color:#7890a8;font-size:13px;margin:24px 0}.or:before,.or:after{content:"";height:1px;background:rgba(135,167,194,.25);flex:1}.social{display:grid;grid-template-columns:1fr 1fr;gap:12px}.social button{padding:13px;border-radius:12px;background:rgba(5,22,37,.7);border:1px solid rgba(117,157,190,.34);color:#e6f1ff;cursor:pointer}.signup{text-align:center;margin-top:25px;color:#829ab2;font-size:14px}.signup a{color:#19adff;text-decoration:none}
+.features{position:absolute;bottom:0;left:0;right:0;z-index:3;display:grid;grid-template-columns:repeat(5,1fr);padding:20px 5%;background:rgba(1,8,16,.86);border-top:1px solid rgba(255,255,255,.08);backdrop-filter:blur(14px)}.feature{display:flex;align-items:center;gap:13px;padding:0 25px;border-right:1px solid rgba(255,255,255,.12)}.feature:last-child{border-right:0}.icon{font-size:25px;color:#13a8ff}.feature span{font-size:14px;color:#d6e4f3;line-height:1.25}
+.toast{position:fixed;right:25px;bottom:25px;z-index:40;padding:14px 18px;border:1px solid rgba(28,174,255,.45);background:rgba(3,18,31,.95);border-radius:12px;opacity:0;transform:translateY(15px);transition:.3s}.toast.show{opacity:1;transform:none}
+@media(max-width:1050px){.navlinks{gap:18px}.hero{grid-template-columns:1fr;padding-top:125px}.login{justify-self:start}.features{position:relative;grid-template-columns:repeat(2,1fr)}.feature{margin:10px 0}.hero{padding-bottom:0}}
+@media(max-width:700px){.nav{height:68px}.navlinks{display:none}.hero{padding:100px 5% 35px}.hero h1{font-size:52px;letter-spacing:8px}.hero h2{font-size:28px}.hero p{font-size:16px}.metrics{flex-direction:column}.metric{width:100%}.login{padding:25px}.features{grid-template-columns:1fr}.feature{border-right:0;border-bottom:1px solid rgba(255,255,255,.1);padding:13px 0}.feature:last-child{border-bottom:0}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="logo"><div class="mark"><small></small></div>AXORA</div>
+  <div class="navlinks"><a class="active" href="#home">Home</a><a href="#about">About</a><a href="#features">Features</a><a href="#usecases">Use Cases</a><a href="#contact">Contact</a></div>
+  <button class="cta" onclick="document.querySelector('#email').focus()">Get Started →</button>
+</nav>
+<main class="hero" id="home">
+  <section>
+    <h1>AXORA</h1>
+    <h2>From Energy Signals <span>to Quality Confidence</span></h2>
+    <p>AI-powered insights to detect process deviations, predict quality risks, and optimize energy efficiency in real time.</p>
+    <div class="metrics">
+      <div class="metric"><div class="metric-label">Energy Consumption</div><div class="metric-value orange">+12.4%</div></div>
+      <div class="metric"><div class="metric-label">Quality Risk</div><div class="metric-value orange">HIGH</div></div>
+      <div class="metric"><div class="metric-label">Process Health</div><div class="metric-value cyan">92%</div></div>
+    </div>
+  </section>
+  <section class="login" id="about">
+    <div class="welcome">Welcome to</div><div class="mini-logo">AXORA</div><div class="sub">Energy-to-Quality Intelligence</div>
+    <form onsubmit="login(event)">
+      <div class="field"><span>✉</span><input id="email" type="email" placeholder="Email address" required /></div>
+      <div class="field"><span>⌑</span><input type="password" placeholder="Password" required /></div>
+      <a class="forgot" href="#" onclick="demo(event,'Password recovery is a demo feature.')">Forgot password?</a>
+      <button class="signin" type="submit">Sign In &nbsp; →</button>
+    </form>
+    <div class="or">or continue with</div>
+    <div class="social"><button onclick="demo(event,'Google sign-in demo')">◉ &nbsp; Google</button><button onclick="demo(event,'Microsoft sign-in demo')">▦ &nbsp; Microsoft</button></div>
+    <div class="signup">Don’t have an account? <a href="#" onclick="demo(event,'Account creation demo')">Sign up</a></div>
+  </section>
+  <div class="features" id="features">
+    <div class="feature"><div class="icon">⌁</div><span>Real-time<br>Process Monitoring</span></div>
+    <div class="feature"><div class="icon">AI</div><span>AI-powered<br>Risk Detection</span></div>
+    <div class="feature"><div class="icon">ϟ</div><span>Energy<br>Optimization</span></div>
+    <div class="feature"><div class="icon">◇</div><span>Quality<br>Prediction</span></div>
+    <div class="feature"><div class="icon">▥</div><span>Actionable<br>Recommendations</span></div>
+  </div>
+</main>
+<div class="toast" id="toast"></div>
+<script>
+function demo(e,msg){e.preventDefault();showToast(msg)}
+function login(e){e.preventDefault();showToast('Demo login successful — dashboard coming next.');setTimeout(()=>{window.location.hash='dashboard'},900)}
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.classList.remove('show'),2500)}
+</script>
+</body>
+</html>
